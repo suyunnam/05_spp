@@ -104,16 +104,25 @@ spp_rcbd_layout
 Now, let's plot it.
 ```{r spp rcbd map}
 ggplot(data = spp_rcbd_layout, aes(x = row, 
-                                   y = -col))
+                                   y = -col)) +
+  geom_tile(aes(fill = factor(nrate_kgha)),
+            color = "black",
+            show.legend = F) +
+  
+  geom_tile(aes(color = krate_kgha),
+            show.legend = F,
+            size = 1.5,
+            linetype = 2,
+            fill = NA) +
 
-    #scale_fill_manual(values = c("#e5f0db",
-    #                           "#b1d095",
-    #                           "#5e813f")) +
+  scale_fill_manual(values = c("#e5f0db",
+                               "#b1d095",
+                               "#5e813f")) +
 
-  #geom_text(aes(label = splot), fontface = "bold", vjust = -.8)+
-  #geom_text(aes(label = trtname), vjust = 1)+
-  #labs(title = "Split-plot RCBD randomization of a\n3 K (whole-plot) x 3 N (split-plot) treatment design") +
-  #theme_void()
+  geom_text(aes(label = splot), fontface = "bold", vjust = -.8)+
+  geom_text(aes(label = trtname), vjust = 1)+
+  labs(title = "Split-plot RCBD randomization of a\n3 K (whole-plot) x 3 N (split-plot) treatment design") +
+  theme_void()
 
 ```
 
